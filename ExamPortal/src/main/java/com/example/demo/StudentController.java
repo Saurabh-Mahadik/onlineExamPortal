@@ -282,11 +282,10 @@ public class StudentController {
 		
 		return "result";
 	}
-	@GetMapping("schedule")
-	public String checkIt(Model model) {
-		model.addAttribute("schedule", new ScheduleTest());
-        return "schedule";
-	}
+	/*
+	 * @GetMapping("schedule") public String checkIt(Model model) {
+	 * model.addAttribute("schedule", new ScheduleTest()); return "schedule"; }
+	 */
 	
 	@GetMapping("profile")
 	public String checkout(Model model,Studentsignup studentprofile) {
@@ -296,12 +295,7 @@ public class StudentController {
         return "studentprofile";
 	}
 	
-	@GetMapping("scheduletest")
-	public String check(@ModelAttribute ScheduleTest test,Model model) {
-		schedulerepository.save(test);
-		System.out.println(test.getTime());
-		return "success";
-	}
+	
 	
 	
 	

@@ -14,11 +14,11 @@
     </a>
     
   </div>
-  <div class="text-end mx-3 font-bold"><a th:attr=" href=@{loginup}"  style="text-decoration-line: none !important;color: white;">LogIn</a></div>
+  <div class="text-end mx-3 font-bold"><a th:attr=" href=@{login}"  style="text-decoration-line: none !important;color: white;">LogIn</a></div>
 </nav>
-<div class="container my-5 col-12 " style="background-color: #d8d1d1;height:760px ;width:450px">
+<div class="container my-5 col-12 " style="background-color: #d8d1d1;height:600px ;width:450px">
 <div class="display-6 text-center">Sign-Up</div>
-<form class="row g-3 my-3" th:action="@{signUp}" th:object="${student}" method="post">
+<form class="row g-3 my-3" th:action="@{teacherinfo}" th:object="${trainer}" method="get">
 
    <div class="col-12">
     
