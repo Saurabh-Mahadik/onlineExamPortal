@@ -49,7 +49,7 @@ public class TeacherContoller {
 			return "teacherDash";
 		}
 		else {
-			return "teacherDash";
+			return "redirect:/trainer";
 
 		}
 	}
