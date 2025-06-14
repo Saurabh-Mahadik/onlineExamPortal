@@ -34,7 +34,7 @@ public class StudentController {
 	public AnswerRepository answerepository;
 	
 	@Autowired
-	public JavaRepository javarepository;
+    public JavaRepository javarepository;
 	
 	@Autowired
 	public ScheduleRepository schedulerepository;
@@ -136,43 +136,35 @@ public class StudentController {
 	}
 	
 	//Add  questions(admin page)
-	@GetMapping("add")
-	public String question(Model model) {
-		model.addAttribute("question", new AddQuestion());
-		return "addquestion";
-	}
-	
-	@PostMapping("save")
-	public String save(@ModelAttribute Java question,Model model) {
-		System.out.println();
-		if(question.getSubject().equals("Java")) {
-			javarepository.save(question);
-			return "success";
-		}
-		else {
-			
-			return "success";
-		}
-		
-	}
+	/*
+	 * @GetMapping("add") public String question(Model model) {
+	 * model.addAttribute("question", new AddQuestion()); return "addquestion"; }
+	 * 
+	 * @PostMapping("save") public String save(@ModelAttribute Java question,Model
+	 * model) { System.out.println(); if(question.getSubject().equals("Java")) {
+	 * javarepository.save(question); return "success"; } else {
+	 * 
+	 * return "success"; }
+	 * 
+	 * }
+	 */
 	
 	//Common question bank
-	@GetMapping("add/{id}")
-	public String addquestion(@PathVariable  Long id,Model model) {
-		Java q1=javarepository.findById(id).orElse(null);
-		//Java q12=q1;
-		AddQuestion que=new AddQuestion(q1.qid,q1.question,q1.opt1,q1.opt2,q1.opt3,q1.opt4,q1.ans,q1.subject,q1.batch,q1.level);
-		System.out.println(que);
-		
-		questionrepository.save(que);
-		return "select";
-	}
-	@GetMapping("select1")
-	public String select(@ModelAttribute Java question,Model model) {
-		List<Java> ques=javarepository.findAll();
-		model.addAttribute("questions",ques);
-		return "select";
-	}
+	//@GetMapping("add/{id}")
+	/*
+	 * public String addquestion(@PathVariable Long id,Model model) { Java
+	 * q1=javarepository.findById(id).orElse(null); //Java q12=q1; AddQuestion
+	 * que=new
+	 * AddQuestion(q1.qid,q1.question,q1.opt1,q1.opt2,q1.opt3,q1.opt4,q1.ans,q1.
+	 * subject,q1.batch,q1.level); System.out.println(que);
+	 * 
+	 * questionrepository.save(que); return "select"; }
+	 */
+	/*
+	 * @GetMapping("select1") public String select(@ModelAttribute Java
+	 * question,Model model) { List<Java> ques=javarepository.findAll();
+	 * model.addAttribute("questions",ques); return "select"; }
+	 */
 	
 	//Displaying question and option
 	@RequestMapping("alltests/view/{id}")
