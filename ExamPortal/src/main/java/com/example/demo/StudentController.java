@@ -100,9 +100,10 @@ public class StudentController {
 		
 		
 		 mark=marksrepository.findByEmail(email);
+		 
 		List<ScheduleTest> schedule=schedulerepository.findAllBySubjectAndBatch(subject,batch);
 		List<ScheduleTest> scheduletest=new ArrayList<ScheduleTest>(schedule);
-		//System.out.println(mark);
+		System.out.println(schedule);
 		//System.out.println("-----------------");
 		//System.out.println(schedule);
 		int count=mark.size();
@@ -126,6 +127,7 @@ public class StudentController {
        //model.addAttribute("mark", mark);
        //model.addAttribute("email", email);
 		return "studDashBoard";
+	 
 		
 	}
 	
@@ -228,7 +230,8 @@ public class StudentController {
 	//Displaying Score 
 	@RequestMapping("/score/result")
 	public String totalScore(Model model,@ModelAttribute Answer question,@ModelAttribute AddQuestion add) {
-		
+		 mark=marksrepository.findByEmail(email);
+		 if(mark.size()<1) {
 		List<Answer> a=answerepository.findAll();
 		Iterator<Answer> i1=a.iterator();
 		Integer score=0;
@@ -273,6 +276,10 @@ public class StudentController {
 		model.addAttribute("marks",score);
 		
 		return "result";
+		 }
+		 else {
+			 return "Error";
+		 }
 	}
 	/*
 	 * @GetMapping("schedule") public String checkIt(Model model) {
