@@ -116,7 +116,7 @@ public class TeacherContoller {
 			System.out.println(que);
 			
 			questionrepository.save(que);
-			return "select";
+			return "redirect:/select1";
 		}
 	
 		@GetMapping("select1")

@@ -278,7 +278,7 @@ public class StudentController {
 		return "result";
 		 }
 		 else {
-			 return "Error";
+			 return "issue";
 		 }
 	}
 	/*
