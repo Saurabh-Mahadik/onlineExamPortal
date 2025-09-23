@@ -32,9 +32,12 @@
             <td  th:text=${que.opt3}></td>
             <td  th:text=${que.opt4}></td>
             <td  th:text=${que.ans}></td>
-            <td><a class="btn btn-primary " th:href="@{add/{id}(id=${que.qid})}">add</a></td>
+            <td><a class="btn btn-primary "  th:attr="href=@{add/{id}(id=${que.qid})}" th:onclick="'alert(\'Question number ' +  ${que.qid}  + ' added\')'">add</a></td>
             <td><a class="btn btn-primary " th:attr=" href=@{registration}">delete</a></td>
-             
+             <td><div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="checkIndeterminate">
+  
+</div></td>
             
         
     
