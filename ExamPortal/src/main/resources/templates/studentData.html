@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>Attempted Test</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        crossorigin="anonymous">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+
+  <style>
+    html, body {
+      height: 100%;
+      font-family: 'Ubuntu', sans-serif;
+    }
+    .mynav li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      border-radius: 5px;
+      padding: 8px 5px;
+    }
+    .mynav li a.active,
+    .mynav li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .mynav li a i {
+      width: 25px;
+      text-align: center;
+    }
+    .notification-badge {
+      background-color: rgba(255, 255, 255, 0.7);
+      float: right;
+      color: #222;
+      font-size: 14px;
+      padding: 0px 8px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid p-0 d-flex h-100">
+    
+      <!-- Heading + Table -->
+      <div class="container my-4">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <h3 class="text-center mb-3 fw-bold text-primary">Attempted Tests</h3>
+            <hr>
+
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover align-middle text-center" style="width: 95%; margin: auto;">
+                <thead class="table-light border">
+                  <tr>
+                    <th>StudentID</th>
+                    <th>TestID</th>
+                    <th>Email</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Marks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="student : ${student}">
+                    <td th:text="${student.studentId}"></td>
+                    <td th:text="${student.tid}"></td>
+                    <td th:text="${student.email}"></td>
+                    <td th:text="${student.startDate}"></td>
+                    <td th:text="${student.time}"></td>
+                    <td th:text="${student.marks}"></td>
+                    
+                      
+                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+          crossorigin="anonymous"></script>
+</body>
+</html>

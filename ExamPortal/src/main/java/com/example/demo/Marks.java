@@ -27,7 +27,35 @@ public class Marks {
 	String subject;
 	String batch;
 	String email;
+	String startDate;
+	Long studentId;
 	
+	public Marks(Long id, Long tid, String date, String time, Integer marks, String subject, String batch, String email,
+			String startDate, Long studentId) {
+		super();
+		this.id = id;
+		this.tid = tid;
+		this.date = date;
+		this.time = time;
+		this.marks = marks;
+		this.subject = subject;
+		this.batch = batch;
+		this.email = email;
+		this.startDate = startDate;
+		this.studentId = studentId;
+	}
+	public Long getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -99,7 +127,8 @@ public class Marks {
 	@Override
 	public String toString() {
 		return "Marks [id=" + id + ", tid=" + tid + ", date=" + date + ", time=" + time + ", marks=" + marks
-				+ ", subject=" + subject + ", batch=" + batch + ", email=" + email + "]";
+				+ ", subject=" + subject + ", batch=" + batch + ", email=" + email + ", startDate=" + startDate
+				+ ", studentId=" + studentId + "]";
 	}
 	
 	

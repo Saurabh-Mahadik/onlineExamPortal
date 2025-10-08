@@ -44,10 +44,11 @@ public class StudentController {
 	
 	public Long tid;
 	public String email;
-	public List<Marks> mark;
+	public List<Marks> mark,mark1;
 	public String subject;
 	public String batch;
 	public Studentsignup student1;
+	public Long studentId;
 	//New registration
 	@RequestMapping("registration")
 	public String signIn(Model model) {
@@ -80,6 +81,7 @@ public class StudentController {
 			email=student1.getEmail();
 			subject=student1.getSubject();
 			batch=student1.getBatch();
+			studentId=student1.getSid();
 		    model.addAttribute("name",student1.getSname());
 			return "welcome";
 			//}
@@ -230,13 +232,16 @@ public class StudentController {
 	//Displaying Score 
 	@RequestMapping("/score/result")
 	public String totalScore(Model model,@ModelAttribute Answer question,@ModelAttribute AddQuestion add) {
-		 mark=marksrepository.findByEmail(email);
-		 if(mark.size()<1) {
+		ScheduleTest schedule=schedulerepository.findById(tid).orElse(null);
+		String startTime=schedule.getTime();
+		mark1=marksrepository.findByEmailAndTime(email,startTime);
+		 if(mark1.size()<1) {
 		List<Answer> a=answerepository.findAll();
 		Iterator<Answer> i1=a.iterator();
 		Integer score=0;
 		System.out.println("Testid"+tid);
-		ScheduleTest schedule=schedulerepository.findById(tid).orElse(null);
+//		ScheduleTest schedule=schedulerepository.findById(tid).orElse(null);
+//		String startTime=schedule.getTime();
        String subject= schedule.getSubject();
         String batch=schedule.getBatch();
 		while(i1.hasNext()) {
@@ -263,7 +268,7 @@ public class StudentController {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         String dateString = currentDate.format(dateFormatter);
         String timeString = currentTime.format(timeFormatter);
-        
+        //String startDate= schedule.getTime();
 		Marks m=new Marks();
 		m.setDate(dateString);
 		m.setTime(timeString);
@@ -272,6 +277,8 @@ public class StudentController {
 		m.setSubject(subject);
 		m.setTid(tid);
 		m.setEmail(email);
+		m.setStartDate(startTime);
+		m.setStudentId(studentId);
 		marksrepository.save(m);
 		model.addAttribute("marks",score);
 		

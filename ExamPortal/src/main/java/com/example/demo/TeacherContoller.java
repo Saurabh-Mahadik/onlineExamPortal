@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -26,6 +28,8 @@ public class TeacherContoller {
 	@Autowired
 	public QuestionRepository questionrepository;
 	
+	@Autowired
+	public MarksRepository marksrepository;
 
 	@RequestMapping("/trainer")
 	public String tainerRegistration(Model model) {
@@ -128,5 +132,20 @@ public class TeacherContoller {
 	/*
 	 * @RequestMapping("") public String scheduleTest() { return"schedule"; }
 	 */
+		@GetMapping("/studentData")
+		public String getStudentData( Long studentId,Model model,@ModelAttribute Marks mark ) {
+			 studentId=mark.getStudentId();
+			System.out.println(studentId);
+			List<Marks> student=marksrepository.findByStudentId(studentId);
+			model.addAttribute("student",student);
+			return"studentData";
+		}
+		
+		@RequestMapping("/search")
+		public String searchStudent(Model model) {
+			Marks studentMarks=new Marks();
+			model.addAttribute("student2",studentMarks);
+			return"searchStudent";
+		}
 
 }
