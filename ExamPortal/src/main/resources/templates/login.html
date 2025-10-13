@@ -44,15 +44,53 @@
         .extra-links a:hover {
             text-decoration: underline;
         }
+        
+      .navbar-nav .nav-link {
+      color: white !important;
+      transition: 0.3s;
+      padding: 8px 15px;
+      border-radius: 6px;
+    }
+    
+    .navbar-nav {
+     
+     margin-left: 270px;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .brand-gradient {
+      background: linear-gradient(45deg, #fff, #ffc107);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     </style>
 </head>
 
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar bg-primary px-3">
-        <a class="navbar-brand" href="#">EXAM EDGE</a>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top px-3 py-2">
+    <a class="navbar-brand fw-bold" th:attr="href=@{/}">
+      <span class="brand-gradient">EXAM EDGE</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+      <ul class="navbar-nav ">
+        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">About</a></li>
+        
+      </ul>
+
+      
+    </div>
+  </nav>
 
     <!-- Sign-In Card -->
     <div class="signin-card">
