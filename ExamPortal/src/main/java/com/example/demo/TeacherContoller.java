@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -116,11 +117,18 @@ public class TeacherContoller {
 		public String addquestion(@PathVariable  Long id,Model model) {
 			Java q1=javarepository.findById(id).orElse(null);
 			//Java q12=q1;
+			
 			AddQuestion que=new AddQuestion(q1.qid,q1.question,q1.opt1,q1.opt2,q1.opt3,q1.opt4,q1.ans,q1.subject,q1.batch,q1.level);
 			System.out.println(que);
 			
 			questionrepository.save(que);
 			return "redirect:/select1";
+		}
+		
+		@GetMapping("delete/{id}")
+		public String deleteQuestion(Model model, @PathVariable Long id) {
+			questionrepository.deleteById(id);
+			return"redirect:/viewQuestionpaper";
 		}
 	
 		@GetMapping("select1")
@@ -146,6 +154,15 @@ public class TeacherContoller {
 			Marks studentMarks=new Marks();
 			model.addAttribute("student2",studentMarks);
 			return"searchStudent";
+		}
+		
+		@GetMapping("/viewQuestionpaper")
+		public String getQuestionpaper(Model model) {
+			
+			List<AddQuestion> allQuestions=questionrepository.findAll();
+			model.addAttribute("allQuestions", allQuestions);
+			return"viewQuestionPaper";
+			
 		}
 
 }
