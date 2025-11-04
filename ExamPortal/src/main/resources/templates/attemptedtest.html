@@ -45,6 +45,7 @@
             <thead class="table-light border">
               <tr>
                 <th>TestID</th>
+                <th>Email</th>
                 <th>Subject</th>
                 <th>Batch</th>
                 <th>Date</th>
@@ -55,6 +56,7 @@
             <tbody>
               <tr th:each="test : ${tests}">
                 <td th:text="${test.tid}"></td>
+                <td th:text="${test.email}"></td>
                 <td th:text="${test.subject}"></td>
                 <td th:text="${test.batch}"></td>
                 <td th:text="${test.date}"></td>

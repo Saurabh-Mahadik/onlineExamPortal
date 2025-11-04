@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -163,6 +164,24 @@ public class TeacherContoller {
 			model.addAttribute("allQuestions", allQuestions);
 			return"viewQuestionPaper";
 			
+		}
+		
+		@GetMapping("/allScheduledTest")
+		public String getAllScheduledTest(Model model) {
+			List<ScheduleTest> allTest=schedulerepository.findAll();
+			model.addAttribute("allTest",allTest);
+			
+			return"allScheduledTest";
+		}
+		
+		@RequestMapping("status/{id}/{subject}")
+		public String getTestStatus(@PathVariable Long id, @PathVariable String subject, Model model ) {
+			System.out.println("ID:"+subject); 
+			
+			List<Marks> students=marksrepository.findByTidAndSubject(id, subject);
+			 Collections.sort(students, (p1, p2) -> p2.marks - p1.marks);
+			 model.addAttribute("tests",students);
+			return"attemptedtest";
 		}
 
 }

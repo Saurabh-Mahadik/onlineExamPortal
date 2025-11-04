@@ -337,7 +337,7 @@ public class StudentController {
 		
 		//model.addAttribute("tests", mark);
 		
-		return "teacherDash";
+		return "progresschart";
 	}
 	
 }
